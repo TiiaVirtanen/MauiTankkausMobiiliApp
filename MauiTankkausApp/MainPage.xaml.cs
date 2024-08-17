@@ -114,6 +114,16 @@ namespace MauiTankkausApp
             inputKentta3.Text = "";
             inputKentta4.Text = "";
         }
+
+        private async void EtusivuButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new MainPage());
+        }
+
+        private async void TankkausButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new TankkkauksetPage());
+        }
     }
 
 }

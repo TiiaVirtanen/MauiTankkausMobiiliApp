@@ -1,7 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MauiTankkausApp.MainPage"
+             x:Class="MauiTankkausApp.TankkkauksetPage"
              Title="TankkausApp">
 
     <Grid>
@@ -17,21 +17,12 @@
 
         <ScrollView Grid.Row="1">
             <VerticalStackLayout>
-                <Image Source="opel.jpg" />
 
-                <StackLayout Padding="30,15">
-                    <Entry x:Name="inputKentta1" Placeholder="Rekisterinumero" />
-                    <Entry x:Name="inputKentta2" Placeholder="Ajokilometrit" />
-                    <Entry x:Name="inputKentta3" Placeholder="Litraa" />
-                    <Entry x:Name="inputKentta4" Placeholder="Euroa" />
-                    <Button x:Name="Lisaa" BackgroundColor="Black" TextColor="White" FontSize="18" Text="Lisää" HorizontalOptions="Fill" Clicked="Lisaa_Clicked" />
-                </StackLayout>
+                <Label Text="Tankkauslista:" TextColor="Black" HorizontalOptions="Center" FontSize="20" />
 
-                <Label Text="Viimeisimmät tankkaukset:" TextColor="Black" HorizontalOptions="Center" FontSize="20" />
+                <Label x:Name="tankklataus" HorizontalOptions="Center" />
 
-                <Label x:Name="tanklataus" HorizontalOptions="Center" />
-
-                <ListView x:Name="tankList" SelectionMode="Single" Margin="20, 0">
+                <ListView x:Name="tankkList" SelectionMode="Single" Margin="20, 0">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -60,8 +51,6 @@
         </ScrollView>
         <StackLayout Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Fill" Padding="10" BackgroundColor="Black">
             <Button x:Name="EtusivuButton"  BackgroundColor="Black" Text="Etusivu" TextColor="White" HorizontalOptions="FillAndExpand" Clicked="EtusivuButton_Clicked"/>
-            <Button x:Name="TankkausButton" BackgroundColor="Black" Text="Tankkauksiin" TextColor="White" HorizontalOptions="FillAndExpand" Clicked="TankkausButton_Clicked"/>
         </StackLayout>
     </Grid>
-
 </ContentPage>
