@@ -28,19 +28,23 @@
                             <ViewCell>
                                 <ContentView Padding="3">
                                     <Frame Padding="2">
-                                        <StackLayout Orientation="Horizontal" Padding="0, 2">
-                                            <Label Text="{Binding Rekisterinumero}" TextColor="Black" FontSize="16" VerticalOptions="StartAndExpand" Margin="5, 0, 0, 0" />
-                                            <Label Text=" |" TextColor="Black" FontSize="18" />
+                                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" ColumnSpacing="10">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <BoxView Color="LightGray" Grid.Column="1" />
+                                            <BoxView Color="LightGray" Grid.Column="3" />
+                                            <Label Text="{Binding Rekisterinumero}" TextColor="Black" FontSize="16" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="0"/>
 
-                                            <Label Text="{Binding Ajokilometrit}" TextColor="Black" FontSize="16" VerticalOptions="StartAndExpand" Margin="5, 0, 0, 0" />
-                                            <Label Text=" km |" TextColor="Black" FontSize="18" />
+                                            <Label Text="{Binding Ajokilometrit, StringFormat='{0} km'}" TextColor="Black" FontSize="16" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="1"/>
 
-                                            <Label Text="{Binding Litraa}" TextColor="Black" FontSize="16" VerticalOptions="StartAndExpand" Margin="5, 0, 0, 0" />
-                                            <Label Text=" l |" TextColor="Black" FontSize="18" />
+                                            <Label Text="{Binding Litraa, StringFormat='{0} l'}" TextColor="Black" FontSize="16" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="2"/>
 
-                                            <Label Text="{Binding Euroa}" TextColor="Black" FontSize="16" VerticalOptions="StartAndExpand" HorizontalOptions="Center" Margin="5, 0, 0, 0" />
-                                            <Label Text=" €" TextColor="Black" FontSize="18" />
-                                        </StackLayout>
+                                            <Label Text="{Binding Euroa, StringFormat='{0} €'}" TextColor="Black" FontSize="16" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="3"/>
+                                        </Grid>
                                     </Frame>
                                 </ContentView>
                             </ViewCell>

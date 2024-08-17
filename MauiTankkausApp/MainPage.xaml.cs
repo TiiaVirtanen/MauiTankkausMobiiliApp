@@ -25,7 +25,7 @@ namespace MauiTankkausApp
                 HttpClient client = new HttpClient();
 
                 client.BaseAddress = new Uri("https://restapibensa.azurewebsites.net/");
-                string json = await client.GetStringAsync("api/tankkaus");
+                string json = await client.GetStringAsync("api/tankkaus/id");
 
                 IEnumerable<Tankkaus> tank = JsonConvert.DeserializeObject<Tankkaus[]>(json);
                 // Muuttujan alustaminen
