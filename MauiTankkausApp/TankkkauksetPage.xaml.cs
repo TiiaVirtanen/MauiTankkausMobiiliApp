@@ -46,6 +46,29 @@ public partial class TankkkauksetPage : ContentPage
         }
     }
 
+    private async void MuokkaaButton_Clicked(object sender, EventArgs e)
+    {
+        // Hae ListView:n valittu item
+        var button = sender as Button;
+        var tankkaus = button?.BindingContext as Tankkaus;
+
+        if (tankkaus != null)
+        {
+            // Siirry muokkaussivulle ja siirrä tiedot
+            await Navigation.PushAsync(new EditTankkauksetPage(
+                tankkaus.Id,
+                tankkaus.Rekisterinumero,
+                tankkaus.Ajokilometrit,
+                tankkaus.Litraa,
+                tankkaus.Euroa));
+        }
+    }
+
+    private void PoistaButton_Clicked(object sender, EventArgs e)
+    {
+
+    }
+
     private async void EtusivuButton_Clicked(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new MainPage());

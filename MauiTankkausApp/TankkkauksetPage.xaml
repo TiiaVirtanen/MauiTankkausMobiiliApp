@@ -27,25 +27,21 @@
                         <DataTemplate>
                             <ViewCell>
                                 <ContentView Padding="3">
-                                    <Frame Padding="2">
-                                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" ColumnSpacing="10">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="*"/>
-                                            </Grid.ColumnDefinitions>
-                                            <BoxView Color="LightGray" Grid.Column="1" />
-                                            <BoxView Color="LightGray" Grid.Column="3" />
-                                            <Label Text="{Binding Rekisterinumero}" TextColor="Black" FontSize="16" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="0"/>
+                                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" ColumnSpacing="10">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text="{Binding Rekisterinumero}" TextColor="Black" FontSize="16" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="0"/>
 
-                                            <Label Text="{Binding Ajokilometrit, StringFormat='{0} km'}" TextColor="Black" FontSize="16" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="1"/>
+                                        <Label Text="{Binding Ajokilometrit, StringFormat='{0} km'}" TextColor="Black" FontSize="16" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="1"/>
 
-                                            <Label Text="{Binding Litraa, StringFormat='{0} l'}" TextColor="Black" FontSize="16" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="2"/>
+                                        <Button x:Name="MuokkaaButton" Text="M" TextColor="Black" FontSize="14" BackgroundColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="2" Clicked="MuokkaaButton_Clicked"/>
 
-                                            <Label Text="{Binding Euroa, StringFormat='{0} €'}" TextColor="Black" FontSize="16" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="3"/>
-                                        </Grid>
-                                    </Frame>
+                                        <Button x:Name="PoistaButton" Text="P" TextColor="Red" FontSize="14" BackgroundColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="3" Clicked="PoistaButton_Clicked"/>
+                                    </Grid>
                                 </ContentView>
                             </ViewCell>
                         </DataTemplate>

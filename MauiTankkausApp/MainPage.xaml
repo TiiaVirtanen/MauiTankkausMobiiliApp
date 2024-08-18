@@ -21,9 +21,9 @@
 
                 <StackLayout Padding="30,15">
                     <Entry x:Name="inputKentta1" Placeholder="Rekisterinumero" />
-                    <Entry x:Name="inputKentta2" Placeholder="Ajokilometrit" />
-                    <Entry x:Name="inputKentta3" Placeholder="Litraa" />
-                    <Entry x:Name="inputKentta4" Placeholder="Euroa" />
+                    <Entry x:Name="inputKentta2" Placeholder="Ajokilometrit" Keyboard="Numeric" />
+                    <Entry x:Name="inputKentta3" Placeholder="Litraa/Kwh" Keyboard="Numeric" />
+                    <Entry x:Name="inputKentta4" Placeholder="Euroa" Keyboard="Numeric" />
                     <Button x:Name="Lisaa" BackgroundColor="Black" TextColor="White" FontSize="18" Text="Lisää" HorizontalOptions="Fill" Clicked="Lisaa_Clicked" />
                 </StackLayout>
 
@@ -39,7 +39,7 @@
                                     <Frame Padding="2">
                                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" ColumnSpacing="10">
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
                                                 <ColumnDefinition Width="*"/>
                                                 <ColumnDefinition Width="*"/>
                                                 <ColumnDefinition Width="*"/>
