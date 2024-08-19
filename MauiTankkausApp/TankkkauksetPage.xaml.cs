@@ -46,6 +46,31 @@ public partial class TankkkauksetPage : ContentPage
         }
     }
 
+    private async Task DeleteDataFromRestAPI(int id)
+    {
+        try
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("https://restapibensa.azurewebsites.net/");
+
+            HttpResponseMessage response = await client.DeleteAsync($"api/tankkaus/{id}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                await DisplayAlert("Poistettu", "Tankkaus poistettiin onnistuneesti!", "OK");
+                LoadDataFromRestAPII(); // Päivitä näkymä
+            }
+            else
+            {
+                await DisplayAlert("Virhe", "Tankkauksen poisto epäonnistui.", "OK");
+            }
+        }
+        catch (Exception e)
+        {
+            await DisplayAlert("Virhe", e.Message.ToString(), "OK");
+        }
+    }
+
     private async void MuokkaaButton_Clicked(object sender, EventArgs e)
     {
         // Hae ListView:n valittu item
@@ -64,13 +89,24 @@ public partial class TankkkauksetPage : ContentPage
         }
     }
 
-    private void PoistaButton_Clicked(object sender, EventArgs e)
-    {
-
-    }
-
     private async void EtusivuButton_Clicked(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new MainPage());
+    }
+
+    private async void PoistaButton_Clicked(object sender, EventArgs e)
+    {
+        var button = sender as Button;
+        var tankkaus = button?.BindingContext as Tankkaus;
+
+        if (tankkaus != null)
+        {
+            bool answer = await DisplayAlert("Poista", "Haluatko varmasti poistaa tämän tankkauksen?", "Kyllä", "Ei");
+
+            if (answer)
+            {
+                await DeleteDataFromRestAPI(tankkaus.Id);
+            }
+        }
     }
 }
