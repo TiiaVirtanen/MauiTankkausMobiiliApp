@@ -50,7 +50,7 @@
 
                                             <Label Text="{Binding Ajokilometrit, StringFormat='{0} km'}" TextColor="Black" FontSize="16" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="1"/>
 
-                                            <Label Text="{Binding Litraa, StringFormat='{0} l'}" TextColor="Black" FontSize="16" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="2"/>
+                                            <Label Text="{Binding Litraa, StringFormat='{0} l/kwh'}" TextColor="Black" FontSize="16" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="2"/>
 
                                             <Label Text="{Binding Euroa, StringFormat='{0} €'}" TextColor="Black" FontSize="16" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="3"/>
                                         </Grid>
@@ -64,8 +64,8 @@
             </VerticalStackLayout>
         </ScrollView>
         <StackLayout Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Fill" Padding="10" BackgroundColor="Black">
-            <Button x:Name="EtusivuButton"  BackgroundColor="Black" Text="Etusivu" TextColor="White" HorizontalOptions="FillAndExpand" Clicked="EtusivuButton_Clicked"/>
-            <Button x:Name="TankkausButton" BackgroundColor="Black" Text="Tankkauksiin" TextColor="White" HorizontalOptions="FillAndExpand" Clicked="TankkausButton_Clicked"/>
+            <Button x:Name="EtusivuButton"  BackgroundColor="Black" ImageSource="house" HeightRequest="40" HorizontalOptions="FillAndExpand" Clicked="EtusivuButton_Clicked"/>
+            <Button x:Name="TankkausButton" BackgroundColor="Black" ImageSource="gaspump" HeightRequest="40" HorizontalOptions="FillAndExpand" Clicked="TankkausButton_Clicked"/>
         </StackLayout>
     </Grid>
 

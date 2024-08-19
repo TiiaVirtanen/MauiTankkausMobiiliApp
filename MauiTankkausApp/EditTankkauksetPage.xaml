@@ -25,8 +25,8 @@
             </StackLayout>
         </VerticalStackLayout>
         <StackLayout Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Fill" Padding="10" BackgroundColor="Black">
-            <Button x:Name="TallennaButton"  BackgroundColor="Green" Text="Tallenna" TextColor="White" HorizontalOptions="FillAndExpand" Clicked="TallennaButton_Clicked"/>
-            <Button x:Name="TakaisinButton" BackgroundColor="Black" Text="Takaisin" TextColor="White" HorizontalOptions="FillAndExpand" Clicked="TakaisinButton_Clicked"/>
+            <Button x:Name="TakaisinButton" BackgroundColor="Black" ImageSource="back" HeightRequest="40" HorizontalOptions="FillAndExpand" Clicked="TakaisinButton_Clicked"/>
+            <Button x:Name="TallennaButton" BackgroundColor="Green" ImageSource="disk" HeightRequest="40" HorizontalOptions="FillAndExpand" Clicked="TallennaButton_Clicked"/>
         </StackLayout>
     </Grid>
 </ContentPage>

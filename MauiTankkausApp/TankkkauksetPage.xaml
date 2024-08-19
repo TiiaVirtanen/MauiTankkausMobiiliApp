@@ -38,9 +38,9 @@
 
                                         <Label Text="{Binding Ajokilometrit, StringFormat='{0} km'}" TextColor="Black" FontSize="16" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="1"/>
 
-                                        <Button x:Name="MuokkaaButton" Text="M" TextColor="Black" FontSize="14" BackgroundColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="2" Clicked="MuokkaaButton_Clicked"/>
+                                        <Button x:Name="MuokkaaButton" ImageSource="edit" HeightRequest="40" BackgroundColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="2" Clicked="MuokkaaButton_Clicked"/>
 
-                                        <Button x:Name="PoistaButton" Text="P" TextColor="Red" FontSize="14" BackgroundColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="3" Clicked="PoistaButton_Clicked"/>
+                                        <Button x:Name="PoistaButton" ImageSource="trash" HeightRequest="40" BackgroundColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="3" Clicked="PoistaButton_Clicked"/>
                                     </Grid>
                                 </ContentView>
                             </ViewCell>
@@ -50,7 +50,7 @@
             </VerticalStackLayout>
         </ScrollView>
         <StackLayout Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Fill" Padding="10" BackgroundColor="Black">
-            <Button x:Name="EtusivuButton"  BackgroundColor="Black" Text="Etusivu" TextColor="White" HorizontalOptions="FillAndExpand" Clicked="EtusivuButton_Clicked"/>
+            <Button x:Name="EtusivuButton"  BackgroundColor="Black" ImageSource="house" HeightRequest="40" HorizontalOptions="FillAndExpand" Clicked="EtusivuButton_Clicked"/>
         </StackLayout>
     </Grid>
 </ContentPage>
