@@ -4,7 +4,7 @@
              x:Class="MauiTankkausApp.TankkkauksetPage"
              Title="TankkausApp">
 
-    <Grid>
+    <!--<Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -52,5 +52,5 @@
         <StackLayout Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Fill" Padding="10" BackgroundColor="Black">
             <Button x:Name="EtusivuButton"  BackgroundColor="Black" ImageSource="house" HeightRequest="40" HorizontalOptions="FillAndExpand" Clicked="EtusivuButton_Clicked"/>
         </StackLayout>
-    </Grid>
+    </Grid>-->
 </ContentPage>

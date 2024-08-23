@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiTankkausApp.EditTankkauksetPage"
              Title="EditTankkauksetPage">
-    <Grid>
+    <!--<Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -28,5 +28,5 @@
             <Button x:Name="TakaisinButton" BackgroundColor="Black" ImageSource="back" HeightRequest="40" HorizontalOptions="FillAndExpand" Clicked="TakaisinButton_Clicked"/>
             <Button x:Name="TallennaButton" BackgroundColor="Green" ImageSource="disk" HeightRequest="40" HorizontalOptions="FillAndExpand" Clicked="TallennaButton_Clicked"/>
         </StackLayout>
-    </Grid>
+    </Grid>-->
 </ContentPage>

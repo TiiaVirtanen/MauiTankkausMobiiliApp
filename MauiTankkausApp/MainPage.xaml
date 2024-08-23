@@ -17,53 +17,55 @@
 
         <ScrollView Grid.Row="1">
             <VerticalStackLayout>
-                <Image Source="opel.jpg" />
-
                 <StackLayout Padding="30,15">
-                    <Entry x:Name="inputKentta1" Placeholder="Rekisterinumero" />
-                    <Entry x:Name="inputKentta2" Placeholder="Ajokilometrit" Keyboard="Numeric" />
-                    <Entry x:Name="inputKentta3" Placeholder="Litraa/Kwh" Keyboard="Numeric" />
-                    <Entry x:Name="inputKentta4" Placeholder="Euroa" Keyboard="Numeric" />
-                    <Button x:Name="Lisaa" BackgroundColor="Black" TextColor="White" FontSize="18" Text="Lisää" HorizontalOptions="Fill" Clicked="Lisaa_Clicked" />
+                    <Label Text="Valitse rekisterinumerosi:"/>
+                    <Picker x:Name="rekPicker"/>
+                    <Label Text="TAI" Padding="0,8,0,10" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="Center"/>
+                    <Button x:Name="LisaaRek" BackgroundColor="Black" Text="Lisää rekisterinumerosi"/>
+                    <Image Source="ooppel.jpg" />
+
+                    <StackLayout x:Name="Tiedot" IsVisible="False">
+                        <Label x:Name="tanklataus" HorizontalOptions="Center" />
+                        <Label x:Name="Reknro" FontSize="Large" FontAttributes="Bold" />
+
+                        <Label Text="Viimeisimmät tankkaukset:" />
+                        
+                        <ListView x:Name="tankList" SelectionMode="Single">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <ContentView Padding="3">
+                                            <Frame Padding="2">
+                                                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" ColumnSpacing="10">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <BoxView Color="LightGray" Grid.Column="1" />
+                                                    <BoxView Color="LightGray" Grid.Column="3" />
+                                                    <Label Text="{Binding Päivämäärä}" FontSize="Small" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="0"/>
+
+                                                    <Label Text="{Binding Ajokilometrit, StringFormat='{0} km'}" FontSize="Small" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="1"/>
+
+                                                    <Label Text="{Binding Litraa, StringFormat='{0} l/kwh'}" FontSize="Small" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="2"/>
+
+                                                    <Label Text="{Binding Euroa, StringFormat='{0} €'}" FontSize="Small" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="3"/>
+                                                </Grid>
+                                            </Frame>
+                                        </ContentView>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+
                 </StackLayout>
-
-                <Label Text="Viimeisimmät tankkaukset:" TextColor="Black" HorizontalOptions="Center" FontSize="20" />
-
-                <Label x:Name="tanklataus" HorizontalOptions="Center" />
-
-                <ListView x:Name="tankList" SelectionMode="Single" Margin="20, 0">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <ContentView Padding="3">
-                                    <Frame Padding="2">
-                                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" ColumnSpacing="10">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto"/>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="*"/>
-                                            </Grid.ColumnDefinitions>
-                                            <BoxView Color="LightGray" Grid.Column="1" />
-                                            <BoxView Color="LightGray" Grid.Column="3" />
-                                            <Label Text="{Binding Rekisterinumero}" TextColor="Black" FontSize="16" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="0"/>
-
-                                            <Label Text="{Binding Ajokilometrit, StringFormat='{0} km'}" TextColor="Black" FontSize="16" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="1"/>
-
-                                            <Label Text="{Binding Litraa, StringFormat='{0} l/kwh'}" TextColor="Black" FontSize="16" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="2"/>
-
-                                            <Label Text="{Binding Euroa, StringFormat='{0} €'}" TextColor="Black" FontSize="16" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="3"/>
-                                        </Grid>
-                                    </Frame>
-                                </ContentView>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-
             </VerticalStackLayout>
         </ScrollView>
         <StackLayout Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Fill" Padding="10" BackgroundColor="Black">
+            <Button x:Name="LisäysButton"  BackgroundColor="Black" ImageSource="plus" HeightRequest="40" HorizontalOptions="FillAndExpand"/>
             <Button x:Name="EtusivuButton"  BackgroundColor="Black" ImageSource="house" HeightRequest="40" HorizontalOptions="FillAndExpand" Clicked="EtusivuButton_Clicked"/>
             <Button x:Name="TankkausButton" BackgroundColor="Black" ImageSource="gaspump" HeightRequest="40" HorizontalOptions="FillAndExpand" Clicked="TankkausButton_Clicked"/>
         </StackLayout>
