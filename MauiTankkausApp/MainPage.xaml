@@ -65,7 +65,7 @@
             </VerticalStackLayout>
         </ScrollView>
         <StackLayout Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Fill" Padding="10" BackgroundColor="Black">
-            <Button x:Name="LisäysButton"  BackgroundColor="Black" ImageSource="plus" HeightRequest="40" HorizontalOptions="FillAndExpand"/>
+            <Button x:Name="LisaaButton"  BackgroundColor="Black" ImageSource="plus" HeightRequest="40" HorizontalOptions="FillAndExpand"/>
             <Button x:Name="EtusivuButton"  BackgroundColor="Black" ImageSource="house" HeightRequest="40" HorizontalOptions="FillAndExpand" Clicked="EtusivuButton_Clicked"/>
             <Button x:Name="TankkausButton" BackgroundColor="Black" ImageSource="gaspump" HeightRequest="40" HorizontalOptions="FillAndExpand" Clicked="TankkausButton_Clicked"/>
         </StackLayout>

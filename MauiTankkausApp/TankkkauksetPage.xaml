@@ -4,7 +4,7 @@
              x:Class="MauiTankkausApp.TankkkauksetPage"
              Title="TankkausApp">
 
-    <!--<Grid>
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -16,41 +16,50 @@
         </Frame>
 
         <ScrollView Grid.Row="1">
-            <VerticalStackLayout>
+            <VerticalStackLayout Padding="30,15">
 
-                <Label Text="Tankkauslista:" TextColor="Black" HorizontalOptions="Center" FontSize="20" />
+                <Label Text="Valitse rekisterinumerosi:"/>
+                <Picker x:Name="rekPicker"/>
+                <StackLayout x:Name="Tiedot" IsVisible="False">
+                    <Label x:Name="tanklataus" HorizontalOptions="Center" />
+                    <Label FontSize="Large" FontAttributes="Bold" Text="Kokonaiskatsaus:"/>
+                    <Label x:Name="Reknro"/>
+                    <Label Text="Tankkauskerrat: "/>
+                    <Label Text="Tankattu: "/>
+                    <Label Text="Rahaa mennyt: "/>
 
-                <Label x:Name="tankklataus" HorizontalOptions="Center" />
+                    <Label Text="Tankkauslista:" TextColor="Black" HorizontalOptions="Center" FontSize="20" Padding="0,15" />
 
-                <ListView x:Name="tankkList" SelectionMode="Single" Margin="20, 0">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <ContentView Padding="3">
-                                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" ColumnSpacing="10">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Label Text="{Binding Rekisterinumero}" TextColor="Black" FontSize="16" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="0"/>
+                    <ListView x:Name="tankList" SelectionMode="Single" Margin="20, 0">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <ContentView Padding="3">
+                                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" ColumnSpacing="10">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Text="{Binding Päivämäärä}" TextColor="Black" FontSize="Small" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="0"/>
 
-                                        <Label Text="{Binding Ajokilometrit, StringFormat='{0} km'}" TextColor="Black" FontSize="16" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="1"/>
+                                            <Label Text="{Binding Ajokilometrit, StringFormat='{0} km'}" TextColor="Black" FontSize="Small" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="1"/>
 
-                                        <Button x:Name="MuokkaaButton" ImageSource="edit" HeightRequest="40" BackgroundColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="2" Clicked="MuokkaaButton_Clicked"/>
+                                            <Button x:Name="MuokkaaButton" ImageSource="edit" HeightRequest="40" BackgroundColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="2" />
 
-                                        <Button x:Name="PoistaButton" ImageSource="trash" HeightRequest="40" BackgroundColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="3" Clicked="PoistaButton_Clicked"/>
-                                    </Grid>
-                                </ContentView>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                                            <Button x:Name="PoistaButton" ImageSource="trash" HeightRequest="40" BackgroundColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="3" />
+                                        </Grid>
+                                    </ContentView>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
             </VerticalStackLayout>
         </ScrollView>
         <StackLayout Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Fill" Padding="10" BackgroundColor="Black">
             <Button x:Name="EtusivuButton"  BackgroundColor="Black" ImageSource="house" HeightRequest="40" HorizontalOptions="FillAndExpand" Clicked="EtusivuButton_Clicked"/>
         </StackLayout>
-    </Grid>-->
+    </Grid>
 </ContentPage>

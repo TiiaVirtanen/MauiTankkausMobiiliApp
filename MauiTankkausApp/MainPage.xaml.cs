@@ -14,7 +14,7 @@ namespace MauiTankkausApp
             LoadDataFromRestAPI();
 
 
-         rekPicker.SelectedIndexChanged += RekPicker_SelectedIndexChanged;
+        rekPicker.SelectedIndexChanged += RekPicker_SelectedIndexChanged;
         tanklataus.Text = "Ladataan viimeisimpiä tankkauksia...";
         }
 
@@ -100,7 +100,7 @@ namespace MauiTankkausApp
 
         private async void TankkausButton_Clicked(object sender, EventArgs e)
         {
-            //await Navigation.PushAsync(new TankkkauksetPage());
+            await Navigation.PushAsync(new TankkkauksetPage());
         }
     }
 
