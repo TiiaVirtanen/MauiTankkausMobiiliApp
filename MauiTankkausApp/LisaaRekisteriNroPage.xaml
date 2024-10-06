@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiTankkausApp.LisaaRekisteriNroPage"
+             Title="LisaaRekisteriNroPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
+        <Frame Grid.Row="0"  HorizontalOptions="Fill" Padding="10" BackgroundColor="Black">
+            <Label Text="TankkausApp" HorizontalTextAlignment="Center" FontSize="28" TextColor="White" />
+        </Frame>
+
+        <StackLayout Grid.Row="1">
+            <Label>Lisää RekNro sivu</Label>
+        </StackLayout>
+
+        <StackLayout Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Fill" Padding="10" BackgroundColor="Black">
+            <Button x:Name="EtusivuButton"  BackgroundColor="Black" ImageSource="house" HeightRequest="40" HorizontalOptions="FillAndExpand" Clicked="EtusivuButton_Clicked"/>
+        </StackLayout>
+    </Grid>
+</ContentPage>

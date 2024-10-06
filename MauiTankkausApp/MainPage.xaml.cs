@@ -102,6 +102,16 @@ namespace MauiTankkausApp
         {
             await Navigation.PushAsync(new TankkkauksetPage());
         }
+
+        private async void LisaaButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new LisaaTankkausPage());
+        }
+
+        private async void LisaaRek_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new LisaaRekisteriNroPage());
+        }
     }
 
 }
