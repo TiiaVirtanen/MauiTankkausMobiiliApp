@@ -14,11 +14,17 @@
             <Label Text="TankkausApp" HorizontalTextAlignment="Center" FontSize="28" TextColor="White" />
         </Frame>
 
-        <StackLayout Grid.Row="1">
-            <Label>Lisää Tankkaus sivu</Label>
+        <StackLayout Grid.Row="1" Padding="30,15">
+            <Label Padding="0,5" Text="Lisää tankkauksesi" FontSize="Medium"/>
+            <Label x:Name="RekNroLabel" />
+            <Entry x:Name="ajokilometritKentta" Placeholder="Ajokilometrit" Keyboard="Numeric"/>
+            <Entry x:Name="litraaKentta" Placeholder="Litraa" Keyboard="Numeric"/>
+            <Entry x:Name="euroaKentta" Placeholder="Euroa" Keyboard="Numeric"/>
+            <Button x:Name="TallennaButton" BackgroundColor="Black" Text="Tallenna" />
         </StackLayout>
 
         <StackLayout Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Fill" Padding="10" BackgroundColor="Black">
+            <Button x:Name="TakaisinButton" BackgroundColor="Black" ImageSource="back" HeightRequest="40" HorizontalOptions="FillAndExpand" Clicked="TakaisinButton_Clicked" />
             <Button x:Name="EtusivuButton"  BackgroundColor="Black" ImageSource="house" HeightRequest="40" HorizontalOptions="FillAndExpand" Clicked="EtusivuButton_Clicked"/>
         </StackLayout>
     </Grid>

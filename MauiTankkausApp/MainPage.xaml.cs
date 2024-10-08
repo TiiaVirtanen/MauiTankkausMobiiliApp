@@ -14,7 +14,7 @@ namespace MauiTankkausApp
             LoadDataFromRestAPI();
 
 
-        rekPicker.SelectedIndexChanged += RekPicker_SelectedIndexChanged;
+        rekPicker.SelectedIndexChanged += RekPicker;
         tanklataus.Text = "Ladataan viimeisimpiä tankkauksia...";
         }
 
@@ -76,7 +76,7 @@ namespace MauiTankkausApp
 
             }
         }
-        private async void RekPicker_SelectedIndexChanged(object sender, EventArgs e)
+        private async void RekPicker(object sender, EventArgs e)
         {
             var selectedAjoneuvo = (Ajoneuvot)rekPicker.SelectedItem;
 
@@ -105,7 +105,16 @@ namespace MauiTankkausApp
 
         private async void LisaaButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new LisaaTankkausPage());
+            var selectedAjoneuvo = (Ajoneuvot)rekPicker.SelectedItem;
+
+            if (selectedAjoneuvo != null)
+            {
+                await Navigation.PushAsync(new LisaaTankkausPage(selectedAjoneuvo.Rekisterinumero));
+            }
+            else
+            {
+                await DisplayAlert("Huomio","Valitse rekisterinumero ensin!","OK");
+            }
         }
 
         private async void LisaaRek_Clicked(object sender, EventArgs e)

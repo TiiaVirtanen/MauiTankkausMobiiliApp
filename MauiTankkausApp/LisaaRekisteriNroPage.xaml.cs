@@ -73,6 +73,8 @@ public partial class LisaaRekisteriNroPage : ContentPage
         string malli = MalliKentta.Text;
 
         await AddDataToRestAPI(rekisterinumero, merkki, malli);
+
+        await Navigation.PopAsync(); // Palaa edelliselle sivulle
     }
 
     private async void EtusivuButton_Clicked(object sender, EventArgs e)
