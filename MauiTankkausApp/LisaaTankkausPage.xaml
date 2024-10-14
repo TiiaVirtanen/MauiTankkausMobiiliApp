@@ -16,7 +16,7 @@
 
         <StackLayout Grid.Row="1" Padding="30,15">
             <Label Padding="0,5" Text="Lisää tankkauksesi" FontSize="Medium"/>
-            <Label x:Name="RekNroLabel" IsEnabled="False"/>
+            <Label x:Name="RekNroLabel" />
             <Entry x:Name="ajokilometritKentta" Placeholder="Ajokilometrit" Keyboard="Numeric"/>
             <Entry x:Name="litraaKentta" Placeholder="Litraa" Keyboard="Numeric"/>
             <Entry x:Name="euroaKentta" Placeholder="Euroa" Keyboard="Numeric"/>

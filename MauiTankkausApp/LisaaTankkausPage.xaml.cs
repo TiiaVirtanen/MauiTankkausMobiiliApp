@@ -53,7 +53,6 @@ public partial class LisaaTankkausPage : ContentPage
             else
             {
                 // Lisäys epäonnistui
-                string responseBody = await response.Content.ReadAsStringAsync();
                 await DisplayAlert("Virhe", "Tietojen lisäys epäonnistui.", "OK");
             }
         }

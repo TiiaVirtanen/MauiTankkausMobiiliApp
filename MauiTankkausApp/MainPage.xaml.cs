@@ -102,7 +102,16 @@ namespace MauiTankkausApp
 
         private async void TankkausButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new TankkkauksetPage());
+            var selectedAjoneuvo = (Ajoneuvot)rekPicker.SelectedItem;
+
+            if (selectedAjoneuvo != null)
+            {
+                await Navigation.PushAsync(new TankkkauksetPage(selectedAjoneuvo.AjoneuvoId, selectedAjoneuvo.Rekisterinumero));
+            }
+            else
+            {
+                await DisplayAlert("Huomio", "Valitse rekisterinumero ensin!", "OK");
+            }
         }
 
         private async void LisaaButton_Clicked(object sender, EventArgs e)

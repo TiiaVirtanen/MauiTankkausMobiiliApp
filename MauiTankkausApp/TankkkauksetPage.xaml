@@ -17,19 +17,16 @@
 
         <ScrollView Grid.Row="1">
             <VerticalStackLayout Padding="30,15">
-
-                <Label Text="Valitse rekisterinumerosi:"/>
-                <Picker x:Name="rekPicker"/>
-                <StackLayout x:Name="Tiedot" IsVisible="False">
-                    <Label x:Name="tanklataus" HorizontalOptions="Center" />
+                <StackLayout>
                     <Label FontSize="Large" FontAttributes="Bold" Text="Kokonaiskatsaus:"/>
-                    <Label x:Name="Reknro"/>
+                    <Label x:Name="ReknroLabel"/>
                     <Label Text="Tankkauskerrat: "/>
                     <Label Text="Tankattu: "/>
                     <Label Text="Rahaa mennyt: "/>
-
+                    
                     <Label Text="Tankkauslista:" TextColor="Black" HorizontalOptions="Center" FontSize="20" Padding="0,15" />
-
+                    <Label x:Name="tanklataus" HorizontalOptions="Center" />
+                    
                     <ListView x:Name="tankList" SelectionMode="Single" Margin="20, 0">
                         <ListView.ItemTemplate>
                             <DataTemplate>
@@ -48,7 +45,7 @@
 
                                             <Button x:Name="MuokkaaButton" ImageSource="edit" HeightRequest="40" BackgroundColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="2" />
 
-                                            <Button x:Name="PoistaButton" ImageSource="trash" HeightRequest="40" BackgroundColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="3" />
+                                            <Button x:Name="PoistaButton" ImageSource="trash" HeightRequest="40" BackgroundColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="3" Clicked="PoistaButton_Clicked"/>
                                         </Grid>
                                     </ContentView>
                                 </ViewCell>
@@ -59,6 +56,7 @@
             </VerticalStackLayout>
         </ScrollView>
         <StackLayout Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Fill" Padding="10" BackgroundColor="Black">
+            <Button x:Name="TakaisinButton" BackgroundColor="Black" ImageSource="back" HeightRequest="40" HorizontalOptions="FillAndExpand" Clicked="TakaisinButton_Clicked" />
             <Button x:Name="EtusivuButton"  BackgroundColor="Black" ImageSource="house" HeightRequest="40" HorizontalOptions="FillAndExpand" Clicked="EtusivuButton_Clicked"/>
         </StackLayout>
     </Grid>

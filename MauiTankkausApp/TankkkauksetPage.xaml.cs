@@ -8,44 +8,17 @@ namespace MauiTankkausApp;
 
 public partial class TankkkauksetPage : ContentPage
 {
-    public TankkkauksetPage()
+    private int ajoneuvoId;
+    public TankkkauksetPage(int ajoneuvoId, string rekisterinumero)
     {
         InitializeComponent();
-        LoadDataFromRestAPI();
+        LoadDataFromRestAPI(ajoneuvoId);
 
-        rekPicker.SelectedIndexChanged += RekPicker_SelectedIndexChanged;
+        ReknroLabel.Text = rekisterinumero;
         tanklataus.Text = "Ladataan tietoja...";
     }
 
-    private async void LoadDataFromRestAPI()
-    {
-        try
-        {
-
-            HttpClient client = new HttpClient();
-
-            client.BaseAddress = new Uri("https://restapibensa24.azurewebsites.net/");
-            string json = await client.GetStringAsync("api/ajoneuvot");
-
-            IEnumerable<Ajoneuvot> ajon = JsonConvert.DeserializeObject<Ajoneuvot[]>(json);
-            // Muuttujan alustaminen
-            ObservableCollection<Ajoneuvot> data = new ObservableCollection<Ajoneuvot>();
-            data = new ObservableCollection<Ajoneuvot>(ajon);
-
-            // Asetetaan Picker komponentin tietolähde ja DisplayMemberPath
-            rekPicker.ItemsSource = data;
-            rekPicker.ItemDisplayBinding = new Binding("Rekisterinumero");
-
-        }
-
-        catch (Exception e)
-        {
-            await DisplayAlert("Virhe", e.Message.ToString(), "OK");
-
-        }
-    }
-
-    private async Task LoadDataFromRestAPI2(Ajoneuvot ajoneuvo)
+    private async Task LoadDataFromRestAPI(int ajoneuvoId)
     {
         try
         {
@@ -53,7 +26,7 @@ public partial class TankkkauksetPage : ContentPage
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("https://restapibensa24.azurewebsites.net/");
 
-            string requestUrl = $"api/tankkaus/ajoneuvo/{ajoneuvo.AjoneuvoId}";
+            string requestUrl = $"api/tankkaus/ajoneuvo/{ajoneuvoId}";
             string json = await client.GetStringAsync(requestUrl);
 
             IEnumerable<Tankkaus> tank = JsonConvert.DeserializeObject<Tankkaus[]>(json);
@@ -75,45 +48,31 @@ public partial class TankkkauksetPage : ContentPage
 
         }
     }
-    private async void RekPicker_SelectedIndexChanged(object sender, EventArgs e)
+
+    private async Task DeleteDataFromRestAPI(int id)
     {
-        var selectedAjoneuvo = (Ajoneuvot)rekPicker.SelectedItem;
-
-        if (selectedAjoneuvo != null)
+        try
         {
-            // Näytä valitun ajoneuvon tiedot
-            Reknro.Text = selectedAjoneuvo.Rekisterinumero;
-            Tiedot.IsVisible = true;
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("https://restapibensa24.azurewebsites.net/");
 
-            // Lataa tankkaustiedot
-            await LoadDataFromRestAPI2(selectedAjoneuvo);
+            HttpResponseMessage response = await client.DeleteAsync($"api/tankkaus/{id}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                await DisplayAlert("Poistettu", "Tankkaus poistettiin onnistuneesti!", "OK");
+                //await LoadDataFromRestAPI(ajoneuvoId); // Päivitä näkymä
+            }
+            else
+            {
+                await DisplayAlert("Virhe", "Tankkauksen poisto epäonnistui.", "OK");
+            }
+        }
+        catch (Exception e)
+        {
+            await DisplayAlert("Virhe", e.Message.ToString(), "OK");
         }
     }
-
-    //private async Task DeleteDataFromRestAPI(int id)
-    //{
-    //    try
-    //    {
-    //        HttpClient client = new HttpClient();
-    //        client.BaseAddress = new Uri("https://restapibensa24.azurewebsites.net/");
-
-    //        HttpResponseMessage response = await client.DeleteAsync($"api/tankkaus/{id}");
-
-    //        if (response.IsSuccessStatusCode)
-    //        {
-    //            await DisplayAlert("Poistettu", "Tankkaus poistettiin onnistuneesti!", "OK");
-    //            LoadDataFromRestAPI(); // Päivitä näkymä
-    //        }
-    //        else
-    //        {
-    //            await DisplayAlert("Virhe", "Tankkauksen poisto epäonnistui.", "OK");
-    //        }
-    //    }
-    //    catch (Exception e)
-    //    {
-    //        await DisplayAlert("Virhe", e.Message.ToString(), "OK");
-    //    }
-    //}
 
     //private async void MuokkaaButton_Clicked(object sender, EventArgs e)
     //{
@@ -133,24 +92,29 @@ public partial class TankkkauksetPage : ContentPage
     //    }
     //}
 
+    private async void PoistaButton_Clicked(object sender, EventArgs e)
+    {
+        var button = sender as Button;
+        var tankkaus = button?.BindingContext as Tankkaus;
+
+        if (tankkaus != null)
+        {
+            bool answer = await DisplayAlert("Poista", "Haluatko varmasti poistaa tämän tankkauksen?", "Kyllä", "Ei");
+
+            if (answer)
+            {
+                await DeleteDataFromRestAPI(tankkaus.TankkausId);
+            }
+        }
+    }
+
     private async void EtusivuButton_Clicked(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new MainPage());
     }
 
-    //private async void PoistaButton_Clicked(object sender, EventArgs e)
-    //{
-    //    var button = sender as Button;
-    //    var tankkaus = button?.BindingContext as Tankkaus;
-
-    //    if (tankkaus != null)
-    //    {
-    //        bool answer = await DisplayAlert("Poista", "Haluatko varmasti poistaa tämän tankkauksen?", "Kyllä", "Ei");
-
-    //        if (answer)
-    //        {
-    //            await DeleteDataFromRestAPI(tankkaus.Id);
-    //        }
-    //    }
-    //}
+    private async void TakaisinButton_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new MainPage());
+    }
 }
