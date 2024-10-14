@@ -7,6 +7,7 @@ namespace MauiTankkausApp
 {
     public partial class MainPage : ContentPage
     {
+        private int _ajoneuvoId;
 
         public MainPage()
         {
@@ -84,6 +85,7 @@ namespace MauiTankkausApp
             {
                 // Näytä valitun ajoneuvon tiedot
                 Reknro.Text = selectedAjoneuvo.Rekisterinumero;
+                _ajoneuvoId = selectedAjoneuvo.AjoneuvoId;
                 Tiedot.IsVisible = true;
 
                 // Lataa tankkaustiedot
@@ -109,7 +111,7 @@ namespace MauiTankkausApp
 
             if (selectedAjoneuvo != null)
             {
-                await Navigation.PushAsync(new LisaaTankkausPage(selectedAjoneuvo.Rekisterinumero));
+                await Navigation.PushAsync(new LisaaTankkausPage(selectedAjoneuvo.AjoneuvoId, selectedAjoneuvo.Rekisterinumero));
             }
             else
             {

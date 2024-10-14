@@ -16,11 +16,11 @@
 
         <StackLayout Grid.Row="1" Padding="30,15">
             <Label Padding="0,5" Text="Lisää tankkauksesi" FontSize="Medium"/>
-            <Label x:Name="RekNroLabel" />
+            <Label x:Name="RekNroLabel" IsEnabled="False"/>
             <Entry x:Name="ajokilometritKentta" Placeholder="Ajokilometrit" Keyboard="Numeric"/>
             <Entry x:Name="litraaKentta" Placeholder="Litraa" Keyboard="Numeric"/>
             <Entry x:Name="euroaKentta" Placeholder="Euroa" Keyboard="Numeric"/>
-            <Button x:Name="TallennaButton" BackgroundColor="Black" Text="Tallenna" />
+            <Button x:Name="TallennaButton" BackgroundColor="Black" Text="Tallenna" Clicked="TallennaButton_Clicked" />
         </StackLayout>
 
         <StackLayout Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Fill" Padding="10" BackgroundColor="Black">

@@ -20,6 +20,6 @@ namespace MauiTankkausApp.Models
 
         public DateOnly? Päivämäärä { get; set; }
 
-        public virtual Ajoneuvot Ajoneuvo { get; set; } = null!;
+        public virtual Ajoneuvot? Ajoneuvo { get; set; }
     }
 }
