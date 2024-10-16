@@ -1,5 +1,6 @@
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.Text;
 using MauiTankkausApp.Models;
 using Newtonsoft.Json;
@@ -8,11 +9,15 @@ namespace MauiTankkausApp;
 
 public partial class TankkkauksetPage : ContentPage
 {
-    private int ajoneuvoId;
+    private int _ajoneuvoId;
+    private string _rekisterinumero;
     public TankkkauksetPage(int ajoneuvoId, string rekisterinumero)
     {
         InitializeComponent();
         LoadDataFromRestAPI(ajoneuvoId);
+
+        _ajoneuvoId = ajoneuvoId;
+        _rekisterinumero = rekisterinumero;
 
         ReknroLabel.Text = rekisterinumero;
         tanklataus.Text = "Ladataan tietoja...";
@@ -74,23 +79,24 @@ public partial class TankkkauksetPage : ContentPage
         }
     }
 
-    //private async void MuokkaaButton_Clicked(object sender, EventArgs e)
-    //{
-    //    // Hae ListView:n valittu item
-    //    var button = sender as Button;
-    //    var tankkaus = button?.BindingContext as Tankkaus;
+    private async void MuokkaaButton_Clicked(object sender, EventArgs e)
+    {
+        // Hae ListView:n valittu item
+        var button = sender as Button;
+        var tankkaus = button?.BindingContext as Tankkaus;
 
-    //    if (tankkaus != null)
-    //    {
-    //        // Siirry muokkaussivulle ja siirrä tiedot
-    //        await Navigation.PushAsync(new EditTankkauksetPage(
-    //            tankkaus.Id,
-    //            tankkaus.Rekisterinumero,
-    //            tankkaus.Ajokilometrit,
-    //            tankkaus.Litraa,
-    //            tankkaus.Euroa));
-    //    }
-    //}
+        if (tankkaus != null)
+        {
+            // Siirry muokkaussivulle ja siirrä tiedot
+            await Navigation.PushAsync(new EditTankkauksetPage(
+                tankkaus.TankkausId,
+                _rekisterinumero,
+                tankkaus.Ajokilometrit ?? 0,
+                tankkaus.Litraa ?? 0,
+
+                tankkaus.Euroa ?? 0));
+        }
+    }
 
     private async void PoistaButton_Clicked(object sender, EventArgs e)
     {

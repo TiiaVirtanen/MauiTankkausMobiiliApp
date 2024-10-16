@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiTankkausApp.EditTankkauksetPage"
              Title="EditTankkauksetPage">
-    <!--<Grid>
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -18,15 +18,16 @@
             <StackLayout Padding="30,15">
                 <Label Text="Muokkaa tankkaustietoja" FontSize="20" />
 
-                <Entry x:Name="rekisterinumeroKentta" Placeholder="Rekisterinumero"/>
+                <Label x:Name="ReknroLabel"/>
                 <Entry x:Name="ajokilometritKentta" Placeholder="Ajokilometrit" Keyboard="Numeric"/>
                 <Entry x:Name="litraaKentta" Placeholder="Litraa" Keyboard="Numeric"/>
                 <Entry x:Name="euroaKentta" Placeholder="Euroa" Keyboard="Numeric"/>
+                <Button x:Name="TallennaButton" BackgroundColor="Black" Text="Tallenna" Clicked="TallennaButton_Clicked" />
             </StackLayout>
         </VerticalStackLayout>
         <StackLayout Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Fill" Padding="10" BackgroundColor="Black">
             <Button x:Name="TakaisinButton" BackgroundColor="Black" ImageSource="back" HeightRequest="40" HorizontalOptions="FillAndExpand" Clicked="TakaisinButton_Clicked"/>
-            <Button x:Name="TallennaButton" BackgroundColor="Green" ImageSource="disk" HeightRequest="40" HorizontalOptions="FillAndExpand" Clicked="TallennaButton_Clicked"/>
+            <Button x:Name="EtusivuButton"  BackgroundColor="Black" ImageSource="house" HeightRequest="40" HorizontalOptions="FillAndExpand" Clicked="EtusivuButton_Clicked"/>
         </StackLayout>
-    </Grid>-->
+    </Grid>
 </ContentPage>

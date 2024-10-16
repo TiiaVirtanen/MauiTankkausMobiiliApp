@@ -43,7 +43,7 @@
 
                                             <Label Text="{Binding Ajokilometrit, StringFormat='{0} km'}" TextColor="Black" FontSize="Small" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="1"/>
 
-                                            <Button x:Name="MuokkaaButton" ImageSource="edit" HeightRequest="40" BackgroundColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="2" />
+                                            <Button x:Name="MuokkaaButton" ImageSource="edit" HeightRequest="40" BackgroundColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="2" Clicked="MuokkaaButton_Clicked" />
 
                                             <Button x:Name="PoistaButton" ImageSource="trash" HeightRequest="40" BackgroundColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Grid.Column="3" Clicked="PoistaButton_Clicked"/>
                                         </Grid>
