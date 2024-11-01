@@ -15,6 +15,7 @@ public partial class TankkkauksetPage : ContentPage
     {
         InitializeComponent();
         LoadDataFromRestAPI(ajoneuvoId);
+        LoadYhteenvetoFromRestAPI(ajoneuvoId);
 
         _ajoneuvoId = ajoneuvoId;
         _rekisterinumero = rekisterinumero;
@@ -51,6 +52,29 @@ public partial class TankkkauksetPage : ContentPage
         {
             await DisplayAlert("Virhe", e.Message.ToString(), "OK");
 
+        }
+    }
+
+    private async Task LoadYhteenvetoFromRestAPI(int ajoneuvoId)
+    {
+        try
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("https://restapibensa24.azurewebsites.net/");
+
+            string requestUrl = $"api/tankkaus/yhteenveto/{ajoneuvoId}";
+            string json = await client.GetStringAsync(requestUrl);
+
+            TankkausYhteenveto yhteenveto = JsonConvert.DeserializeObject<TankkausYhteenveto>(json);
+
+            // Näytä tiedot käyttöliittymässä
+            TankkauskerratLabel.Text = $"Tankkauskerrat: {yhteenveto.Tankkauskerrat}";
+            KokonaisLitratLabel.Text = $"Kokonaiskulutus: {yhteenveto.Kokonaiskulutus} L";
+            KokonaisSummaLabel.Text = $"Käytetty euromäärä: {yhteenveto.KäytettyEuromäärä} €";
+        }
+        catch (Exception e)
+        {
+            await DisplayAlert("Virhe", e.Message.ToString(), "OK");
         }
     }
 

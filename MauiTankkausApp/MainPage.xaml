@@ -28,8 +28,8 @@
                         <Label x:Name="tanklataus" HorizontalOptions="Center" />
                         <Label x:Name="Reknro" FontSize="Large" FontAttributes="Bold" />
 
-                        <Label Text="Viimeisimmät tankkaukset:" />
-                        
+                        <Label x:Name="tankkausLabel" />
+
                         <ListView x:Name="tankList" SelectionMode="Single">
                             <ListView.ItemTemplate>
                                 <DataTemplate>

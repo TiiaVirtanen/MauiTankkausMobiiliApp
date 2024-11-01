@@ -18,11 +18,11 @@
         <ScrollView Grid.Row="1">
             <VerticalStackLayout Padding="30,15">
                 <StackLayout>
-                    <Label FontSize="Large" FontAttributes="Bold" Text="Kokonaiskatsaus:"/>
+                    <Label FontSize="Large" FontAttributes="Bold" Text="Kokonaiskatsaus"/>
                     <Label x:Name="ReknroLabel"/>
-                    <Label Text="Tankkauskerrat: "/>
-                    <Label Text="Tankattu: "/>
-                    <Label Text="Rahaa mennyt: "/>
+                    <Label Text="Tankkauskerrat: " x:Name="TankkauskerratLabel"/>
+                    <Label x:Name="KokonaisLitratLabel" Text="Tankattu: "/>
+                    <Label x:Name="KokonaisSummaLabel"/>
                     
                     <Label Text="Tankkauslista:" TextColor="Black" HorizontalOptions="Center" FontSize="20" Padding="0,15" />
                     <Label x:Name="tanklataus" HorizontalOptions="Center" />

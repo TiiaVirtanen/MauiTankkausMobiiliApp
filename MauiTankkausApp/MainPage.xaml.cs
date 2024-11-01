@@ -60,11 +60,23 @@ namespace MauiTankkausApp
 
                 IEnumerable<Tankkaus> tank = JsonConvert.DeserializeObject<Tankkaus[]>(json);
 
-                // Muuttujan alustaminen
-                ObservableCollection<Tankkaus> datat = new ObservableCollection<Tankkaus>(tank);
+                // Tarkistetaan, onko tankkaustietoja
+                if (tank == null || !tank.Any())
+                {
+                    // Näytetään viesti tankkauslistan tilalle
+                    tankList.ItemsSource = null;
+                    tankkausLabel.Text = "Ei tankkauksia!";
+                    return;
+                }
+                else
+                {
+                    // Muuttujan alustaminen
+                    ObservableCollection<Tankkaus> datat = new ObservableCollection<Tankkaus>(tank);
 
-                // Asetetaan datat näkyviin XAML-tiedostossa olevalle listalle
-                tankList.ItemsSource = datat;
+                    // Asetetaan datat näkyviin XAML-tiedostossa olevalle listalle
+                    tankList.ItemsSource = datat;
+                    tankkausLabel.Text = "Viimeisimmät tankkaukset:";
+                }
 
                 // Tyhjennetään latausilmoitus label
                 tanklataus.Text = "";
