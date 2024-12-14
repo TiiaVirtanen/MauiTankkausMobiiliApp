@@ -43,6 +43,7 @@ public partial class TankkkauksetPage : ContentPage
                 // N‰ytet‰‰n viesti tankkauslistan tilalle
                 tankList.ItemsSource = null;
                 tankkausLabel.Text = "Ei tankkauksia!";
+                tanklataus.Text = "";
                 return;
             }
             else
@@ -55,7 +56,7 @@ public partial class TankkkauksetPage : ContentPage
             }
 
             // Tyhjennet‰‰n latausilmoitus label
-            tanklataus.Text = " ";
+            tanklataus.Text = "";
 
         }
 

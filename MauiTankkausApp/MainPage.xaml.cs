@@ -66,6 +66,7 @@ namespace MauiTankkausApp
                     // Näytetään viesti tankkauslistan tilalle
                     tankList.ItemsSource = null;
                     tankkausLabel.Text = "Ei tankkauksia!";
+                    tanklataus.Text = "";
                     return;
                 }
                 else
