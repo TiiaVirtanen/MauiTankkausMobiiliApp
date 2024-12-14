@@ -26,6 +26,7 @@
                     
                     <Label Text="Tankkauslista:" TextColor="Black" HorizontalOptions="Center" FontSize="20" Padding="0,15" />
                     <Label x:Name="tanklataus" HorizontalOptions="Center" />
+                    <Label x:Name="tankkausLabel" />
                     
                     <ListView x:Name="tankList" SelectionMode="Single" Margin="20, 0">
                         <ListView.ItemTemplate>

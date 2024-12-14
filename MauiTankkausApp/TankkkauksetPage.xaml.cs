@@ -37,14 +37,25 @@ public partial class TankkkauksetPage : ContentPage
 
             IEnumerable<Tankkaus> tank = JsonConvert.DeserializeObject<Tankkaus[]>(json);
 
-            // Muuttujan alustaminen
-            ObservableCollection<Tankkaus> datat = new ObservableCollection<Tankkaus>(tank);
+            //Tarkistetaan löytyykö tankkaustietoja
+            if (tank == null || !tank.Any())
+            {
+                // Näytetään viesti tankkauslistan tilalle
+                tankList.ItemsSource = null;
+                tankkausLabel.Text = "Ei tankkauksia!";
+                return;
+            }
+            else
+            {
+                // Muuttujan alustaminen
+                ObservableCollection<Tankkaus> datat = new ObservableCollection<Tankkaus>(tank);
 
-            // Asetetaan datat näkyviin XAML-tiedostossa olevalle listalle
-            tankList.ItemsSource = datat;
+                // Asetetaan datat näkyviin XAML-tiedostossa olevalle listalle
+                tankList.ItemsSource = datat;
+            }
 
             // Tyhjennetään latausilmoitus label
-            tanklataus.Text = "";
+            tanklataus.Text = " ";
 
         }
 
@@ -67,10 +78,20 @@ public partial class TankkkauksetPage : ContentPage
 
             TankkausYhteenveto yhteenveto = JsonConvert.DeserializeObject<TankkausYhteenveto>(json);
 
-            // Näytä tiedot käyttöliittymässä
-            TankkauskerratLabel.Text = $"Tankkauskerrat: {yhteenveto.Tankkauskerrat}";
-            KokonaisLitratLabel.Text = $"Kokonaiskulutus: {yhteenveto.Kokonaiskulutus} L";
-            KokonaisSummaLabel.Text = $"Käytetty euromäärä: {yhteenveto.KäytettyEuromäärä} €";
+            if (yhteenveto == null)
+            {
+                // Näytä tiedot käyttöliittymässä
+                TankkauskerratLabel.Text = "Tankkauskerrat: ";
+                KokonaisLitratLabel.Text = "Kokonaiskulutus: ";
+                KokonaisSummaLabel.Text = "Käytetty euromäärä: ";
+            }
+            else
+            {
+                // Näytä tiedot käyttöliittymässä
+                TankkauskerratLabel.Text = $"Tankkauskerrat: {yhteenveto.Tankkauskerrat}";
+                KokonaisLitratLabel.Text = $"Kokonaiskulutus: {yhteenveto.Kokonaiskulutus} L";
+                KokonaisSummaLabel.Text = $"Käytetty euromäärä: {yhteenveto.KäytettyEuromäärä} €";
+            }
         }
         catch (Exception e)
         {
